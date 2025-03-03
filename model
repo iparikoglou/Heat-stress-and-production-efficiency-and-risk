@@ -1,0 +1,37 @@
+model{
+
+#4 Model specification
+for (n in 1:N) {
+#7
+firm[n]<-X[n,K+1]
+ltrans[n]<-exp(inprod( transeff, X[n,39:44] ))
+u[n] ~ dexp( ltrans[n]);
+TE[n]<-exp(-u[n]);
+mu[n] <- inprod( beta, X[n,1:K] ) +a[firm[n]] + u[n]  + eta[firm[n]];
+y[n,1] ~ dnorm(mu[n], inprod(tau, exp(inprod( riskt, X[n,39:44] ))  ));
+}
+
+#15 firm specific components
+for (l in 1:L) {
+eta[l] ~ dexp( lpers[l]);
+lpers[l]<-exp(inprod( perseff, Per[l,1:Kper] ))
+a[l] ~ dmnorm( 0, inprod(tau_a, exp(inprod( riskp,  Per[l,1:Kper] ))  )); 
+LRTE[l]<-exp(-eta[l]);
+}
+
+#20 Priors
+transeff ~ dmnorm( mtran, Ptran );
+perseff~ dmnorm( mpers, Ppers );
+beta~ dmnorm( m, P );
+sigmasq<-1/tau
+tau ~ dgamma( atau, btau );
+tau_a ~ dgamma( 0.01, 0.001 );
+
+
+riskt~ dmnorm( mriskt, Priskt );
+riskp~ dmnorm( mriskp, Priskp );
+
+meanLRTE<-mean(LRTE)
+meanTE<-mean(TE)
+
+}
