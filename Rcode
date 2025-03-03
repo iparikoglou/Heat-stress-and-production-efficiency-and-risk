@@ -19,21 +19,10 @@ library('foreign')
 require("MASS");		# to sample from multivariate-Normal densities
 require("coda");		# to summarize the draws from the posterior
 require("R2jags");	# to call JAGS
-require("BayesianTools");	# to call JAGS
 
-########################### RCM with determinants ###########################
-dat <-    read_dta("/Users/ip/Desktop/FinalRobustness18.06/K L LU A M dataset 4b more.dta")
+
+dat <-    read_dta("dataset.dta")
 dat$cons<-1
-
-names(dat)
-
-dat$logage<-log(dat$age)-mean(log(dat$age))
-dat$educ<-dat$education - mean(dat$education)
-summary(dat$density)
-dat$logdens<-dat$density - mean(dat$density)
-summary(dat$logdens)
-dat$v_region<-dat$valley - mean(dat$valley)
-dat$h_region<-dat$hill - mean(dat$hill)
 
 # Define the data matrices
 indVarNames <- c(
