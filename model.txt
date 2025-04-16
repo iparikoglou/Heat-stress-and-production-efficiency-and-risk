@@ -8,7 +8,9 @@ ltrans[n]<-exp(inprod( transeff, X[n,39:44] ))
 u[n] ~ dexp( ltrans[n]);
 TE[n]<-exp(-u[n]);
 mu[n] <- inprod( beta, X[n,1:K] ) +a[firm[n]] + u[n]  + eta[firm[n]];
-y[n,1] ~ dnorm(mu[n], inprod(tau, exp(inprod( riskt, X[n,39:44] ))  ));
+y[n,1] ~ dnorm(mu[n], invtau[n]);
+invtau[n]<-1/inprod(tau[n], exp(inprod( riskt, X[n,39:44] ))  )
+
 }
 
 #15 firm specific components
