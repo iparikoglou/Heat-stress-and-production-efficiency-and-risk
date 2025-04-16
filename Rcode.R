@@ -89,7 +89,7 @@ model = paste("model.txt");
 
 # Set the values of the Gibbs-sampler parameters to be used later on
 burnin <-120000;		# number of burnin draws
-draws <- 100000;		# number of retained draws
+draws <- 120000;		# number of retained draws
 inits <- NULL;
 
 
