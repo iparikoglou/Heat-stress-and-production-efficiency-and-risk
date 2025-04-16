@@ -25,7 +25,7 @@ perseff~ dmnorm( mpers, Ppers );
 beta~ dmnorm( m, P );
 sigmasq<-1/tau
 tau ~ dgamma( atau, btau );
-tau_a ~ dgamma( 0.01, 0.001 );
+tau_a ~ dgamma( 0.01, 0.01 );
 
 
 riskt~ dmnorm( mriskt, Priskt );
