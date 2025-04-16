@@ -27,15 +27,9 @@ dat$cons<-1
 # Define the data matrices
 indVarNames <- c(
   "cons", "log_Capital2", "log_Labour",   "log_LU",  "log_uaa" , "log_VCCHF" , "t", "logout2",#8
-"log_KK2", "log_KL2"  , "log_KS2" , "log_KA2", "log_KVC2" ,             
- "log_LL" ,  "log_LS" ,  "log_LA"  ,  "log_LVC" ,                         
-  "log_AA" , "log_AS" , "log_AVC" , 
-"log_VCVC" ,"log_SVC" ,
-"log_SS",                   #23
-"tt" ,  "log_tK2" , "log_tL" ,  "log_tA", "log_tVC" , "log_tS" ,     #29         
- "logout2logout2" , "logout2t" , "logout2K2" ,"logout2L", "logout2A" ,"logout2VC" ,"logout2S" ,#36
- "FARMCODE", "jahr",#38
-"cons", "log_THI", "logage", "logdens", "v_region", "h_region" ) #39-44
+.... # rest of interaction terms for the translog specification
+ "FARMCODE", "jahr",#38  # farm code and year
+"cons", "THI", "age", "dens", "v_region", "h_region" ) #39-44
 X <- as.matrix(dat[indVarNames]);
 y <- as.matrix(dat["logout1"]);
 
@@ -59,22 +53,16 @@ alpers<-1
 blpers<- -log(0.85);
 
 names(dat)
-
-myvars <- c("cons", "log_THI_TI",  "FARMCODE"  ) 
-deter <- dat[myvars]
-pertoo<- unique( deter[ , 1:3 ] )
  
- Deter<- read_dta("/Users/ip/Desktop/FinalRobustness18.06/K L LU A M dataset 4b Per.dta")
- names(Deter)
+ Deter<- read_dta("Deter Per.dta")  #persistent determinants of inefficiency and risk
+ myvars <- c( "cons", "THI_TI", "age"  , "dens" ,  "valley" ,  "hill" , "FARMCODE"  )   #this is time invariant
+ Per <- as.matrix(Deter[myvars]);
 
- total <- merge(Deter,pertoo,by="FARMCODE")
- names(total)   #"log_THI",     "logage", "logdens", "v_region", "h_region"
- myvars <- c( "cons", "log_THI_TI", "logage"  , "logdens" ,  "valley" ,  "hill" , "FARMCODE"  ) 
- Per<- total[myvars]
 Nper <- dim(Per)[1];			
 Kper <- dim(Per)[2]-1;		
 
 J<-6
+# priors for efficiency and risk: 
  mtran <- matrix(rep(0,J),J,1);
 Ptran <-10*diag(J);
  mpers <- matrix(rep(0,Kper),Kper,1);
