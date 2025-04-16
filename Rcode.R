@@ -53,7 +53,7 @@ Kper <- dim(Per)[2]-1;
 
 J<-6
 
-# THESE ARE THE PRIORS: See appendfix of the paper
+# THESE ARE THE PRIORS: See appendfix of the paper or adjust accordingly
 # BETAS
 m <- matrix(rep(0,K),K,1);
 P <-0.01*diag(K);
