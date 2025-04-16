@@ -40,17 +40,7 @@ K <- dim(X)[2]-8;			# number of independent variables
 L <- max(dat["FARMCODE"]);
 maxt <- max(dat["jahr"]);
 
-m <- matrix(rep(0,K),K,1);
-P <-0.01*diag(K);
-m_a <- matrix(rep(0,L),L,1);
 
-atau <-0.001;
-btau <-0.001;
-  
-altrans<-1
-bltrans<- -log(0.85);
-alpers<-1
-blpers<- -log(0.85);
 
 names(dat)
  
@@ -62,7 +52,22 @@ Nper <- dim(Per)[1];
 Kper <- dim(Per)[2]-1;		
 
 J<-6
-# priors for efficiency and risk: See appendfix of the paper
+
+# THESE ARE THE PRIORS: See appendfix of the paper
+# BETAS
+m <- matrix(rep(0,K),K,1);
+P <-0.01*diag(K);
+m_a <- matrix(rep(0,L),L,1);
+
+atau <-0.001;
+btau <-0.001;
+
+# priors for efficiency and risk:  
+altrans<-1
+bltrans<- -log(0.85);
+alpers<-1
+blpers<- -log(0.85);
+
  mtran <-  
 Ptran <- 
  mpers <-  
