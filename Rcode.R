@@ -62,16 +62,16 @@ Nper <- dim(Per)[1];
 Kper <- dim(Per)[2]-1;		
 
 J<-6
-# priors for efficiency and risk: 
- mtran <- matrix(rep(0,J),J,1);
-Ptran <-10*diag(J);
- mpers <- matrix(rep(0,Kper),Kper,1);
- Ppers  <-10*diag(Kper);
+# priors for efficiency and risk: See appendfix of the paper
+ mtran <-  
+Ptran <- 
+ mpers <-  
+ Ppers  <- 
  
- mriskt <- matrix(rep(0,J),J,1);
- Priskt <-10*diag(J);
- mriskp <- matrix(rep(0,Kper),Kper,1);
- Priskp  <-10*diag(Kper);
+ mriskt <- 
+ Priskt <- 
+ mriskp <-  
+ Priskp  <- 
 
 rm(indVarNames, myvars, deter)#, Tran1 
 # data for jags, data & param
