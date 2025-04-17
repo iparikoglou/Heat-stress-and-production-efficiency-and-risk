@@ -17,7 +17,8 @@ invtau[n]<-1/inprod(tau[n], exp(inprod( riskt, X[n,39:44] ))  )
 for (l in 1:L) {
 eta[l] ~ dexp( lpers[l]);
 lpers[l]<-exp(inprod( perseff, Per[l,1:Kper] ))
-a[l] ~ dmnorm( 0, inprod(tau_a, exp(inprod( riskp,  Per[l,1:Kper] ))  )); 
+a[l] ~ dmnorm( 0, invtau_a[l])
+invtau_a[l]<-1/inprod(tau_a, exp(inprod( riskp,  Per[l,1:Kper] ))  ); 
 LRTE[l]<-exp(-eta[l]);
 }
 
