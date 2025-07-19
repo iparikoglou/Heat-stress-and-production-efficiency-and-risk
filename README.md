@@ -1,2 +1,1 @@
-
-Iordanis Parikoglou, Robert Finger (2025) The effect of heat stress on risk and efficiency in dairy farming, European Review of Agricultural Economics 
+Iordanis Parikoglou, Robert Finger, The effect of heat stress on risk and efficiency in dairy farming, European Review of Agricultural Economics, Volume 52, Issue 2, April 2025, Pages 187–215, https://doi.org/10.1093/erae/jbaf013
